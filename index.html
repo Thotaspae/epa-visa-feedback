@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#990000">
+<title>Your Visa Journey | EPA Global</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --maroon:#990000; --maroon-deep:#5e0000; --maroon-soft:rgba(153,0,0,.08);
+  --gold:#C9A050; --gold-soft:rgba(201,160,80,.18);
+  --cream:#FBF7F0; --ink:#1c1a19; --muted:#6f6a66; --line:#eadfd0; --white:#fff; --fill:#f6f1ea;
+  --shadow:0 2px 6px rgba(94,0,0,.05),0 18px 50px rgba(94,0,0,.10);
+  --font:"Poppins",-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--font);color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased;line-height:1.5}
+a{color:inherit}
+.container{max-width:1080px;margin:0 auto;padding:0 22px}
+
+/* top bar + header */
+.topbar{background:var(--maroon-deep);color:#f3e6cf;font-size:12.5px;text-align:center;padding:8px 14px;letter-spacing:.02em}
+.topbar b{color:var(--gold);font-weight:600}
+header.site{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
+.hrow{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo img{height:38px;display:none}
+.logo .mark{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--maroon),var(--maroon-deep));display:grid;place-items:center;box-shadow:0 4px 12px rgba(153,0,0,.3)}
+.logo .mark svg{width:22px;height:22px}
+.logo .word{font-weight:700;font-size:20px;letter-spacing:-.02em;color:var(--maroon-deep)}
+.logo .word span{color:var(--gold)}
+nav.links{display:flex;gap:26px;align-items:center;font-size:14px;font-weight:500}
+nav.links a{text-decoration:none;color:var(--muted);transition:color .2s}
+nav.links a:hover{color:var(--maroon)}
+.pill{background:var(--maroon);color:#fff!important;padding:9px 18px;border-radius:999px;font-weight:600}
+.pill:hover{background:var(--maroon-deep)}
+@media(max-width:640px){nav.links a:not(.pill){display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;color:#fff;background:
+  radial-gradient(900px 400px at 85% -10%,rgba(201,160,80,.35),transparent 60%),
+  linear-gradient(135deg,var(--maroon) 0%,var(--maroon-deep) 100%);padding:56px 0 130px}
+.hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.10) 1.2px,transparent 1.2px);background-size:26px 26px;mask-image:linear-gradient(90deg,transparent,#000 70%);-webkit-mask-image:linear-gradient(90deg,transparent,#000 70%);pointer-events:none}
+.hgrid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);padding:6px 14px;border-radius:999px;font-size:12.5px;font-weight:500;letter-spacing:.04em;margin-bottom:20px}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--gold);display:block}
+.hero h1{font-size:clamp(32px,5.4vw,54px);line-height:1.08;letter-spacing:-.03em;font-weight:700;margin:0 0 16px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p.lead{font-size:clamp(15px,2vw,18px);color:#f0dede;max-width:480px;margin:0 0 26px}
+.facts{display:flex;flex-wrap:wrap;gap:10px}
+.facts span{display:inline-flex;align-items:center;gap:8px;font-size:13px;background:rgba(0,0,0,.18);padding:8px 14px;border-radius:999px}
+.facts svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.heroart{position:relative}
+.heroart svg,.heroart img{width:100%;height:auto;display:block;filter:drop-shadow(0 24px 40px rgba(0,0,0,.35))}
+.heroart img{border-radius:24px;aspect-ratio:4/3;object-fit:cover}
+@media(max-width:820px){.hgrid{grid-template-columns:1fr}.heroart{max-width:380px;margin:10px auto 0}}
+
+/* form shell */
+.shell{position:relative;z-index:5;margin-top:-84px;scroll-margin-top:84px}
+.panel{background:var(--white);border-radius:28px;box-shadow:var(--shadow);overflow:hidden;border:1px solid var(--line)}
+.progress{height:5px;background:var(--fill)}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--maroon),var(--gold));transition:width .5s cubic-bezier(.4,0,.2,1)}
+.stepper{display:flex;align-items:center;padding:22px 26px 6px}
+.sdot{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:500;color:var(--muted)}
+.sdot b{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--fill);color:var(--muted);border:2px solid var(--line);transition:all .3s}
+.sdot b svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sdot.on b{background:var(--maroon);border-color:var(--maroon);color:#fff;box-shadow:0 6px 16px rgba(153,0,0,.3)}
+.sdot.on{color:var(--maroon-deep);font-weight:600}
+.sdot.done b{background:var(--gold);border-color:var(--gold);color:#fff}
+.sline{flex:1;height:2px;background:var(--line);margin:0 10px;border-radius:2px;min-width:12px}
+@media(max-width:700px){.sdot span{display:none}.stepper{padding:18px 18px 4px}}
+.body{padding:22px 26px 32px}
+@media(max-width:600px){.body{padding:18px 18px 26px}}
+
+.step{display:none;animation:in .45s cubic-bezier(.2,.8,.2,1)}
+.step.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.stitle{display:flex;align-items:center;gap:14px;margin:6px 0 22px}
+.stitle .ic{flex:none;width:52px;height:52px;border-radius:16px;background:var(--maroon-soft);display:grid;place-items:center}
+.stitle .ic svg{width:26px;height:26px;stroke:var(--maroon);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.stitle h2{margin:0;font-size:clamp(21px,3.2vw,27px);letter-spacing:-.02em;line-height:1.2;font-weight:700;color:var(--maroon-deep)}
+.stitle p{margin:2px 0 0;color:var(--muted);font-size:14.5px}
+.card{background:var(--cream);border:1px solid var(--line);border-radius:20px;padding:20px;margin-bottom:14px}
+.q{font-size:16px;font-weight:600;letter-spacing:-.01em;margin:0 0 4px}
+.hint{font-size:13px;color:var(--muted);margin:0 0 14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{appearance:none;border:1.5px solid var(--line);background:var(--white);color:var(--ink);font:inherit;font-size:14.5px;padding:9px 16px;border-radius:999px;cursor:pointer;transition:transform .15s,background .2s,color .2s,border-color .2s}
+.chip:hover{border-color:var(--gold)}
+.chip:active{transform:scale(.96)}
+.chip.sel{background:var(--maroon);border-color:var(--maroon);color:#fff}
+.chip.sel::before{content:"✓ ";font-weight:700;color:var(--gold)}
+.other-input,.txt,.field input{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--white);border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;outline:none;transition:border-color .2s,box-shadow .2s}
+.other-input{margin-top:10px;display:none}.other-input.show{display:block}
+.txt{resize:none;min-height:84px}
+.other-input:focus,.txt:focus,.field input:focus{border-color:var(--maroon);box-shadow:0 0 0 4px var(--maroon-soft)}
+.grow{padding:14px 0;border-top:1px solid var(--line)}
+.grow:first-child{border-top:0;padding-top:2px}.grow:last-child{padding-bottom:0}
+.glabel{font-size:14.5px;margin-bottom:10px;font-weight:500}
+.seg{display:flex;background:var(--white);border:1.5px solid var(--line);border-radius:14px;padding:3px;gap:2px}
+.seg button{flex:1;appearance:none;border:0;background:transparent;color:var(--ink);font:inherit;font-size:14.5px;font-weight:500;padding:9px 0;border-radius:11px;cursor:pointer;transition:background .2s,color .2s}
+.seg button:hover{background:var(--gold-soft)}
+.seg button.sel{background:var(--maroon);color:#fff;box-shadow:0 4px 12px rgba(153,0,0,.3)}
+.seg.nps{flex-wrap:wrap}.seg.nps button{flex:1 0 calc(100%/6 - 2px);padding:11px 0}
+@media(min-width:560px){.seg.nps button{flex:1 0 0}}
+.ends{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:8px}
+.field{margin-bottom:12px}.field:last-child{margin-bottom:0}
+.field label{display:block;font-size:13px;color:var(--muted);margin:0 0 6px 2px}
+.actions{display:flex;gap:12px;margin-top:22px}
+.btn{appearance:none;border:0;font:inherit;font-size:16px;font-weight:600;padding:15px 28px;border-radius:999px;cursor:pointer;text-decoration:none;text-align:center;transition:transform .15s,box-shadow .2s,background .2s}
+.btn:active{transform:scale(.97)}
+.btn.primary{flex:1;background:linear-gradient(135deg,var(--maroon),var(--maroon-deep));color:#fff;box-shadow:0 10px 24px rgba(153,0,0,.3)}
+.btn.primary:hover{box-shadow:0 14px 30px rgba(153,0,0,.4)}
+.btn.ghost{background:var(--white);color:var(--maroon);border:1.5px solid var(--line)}
+.btn[disabled]{opacity:.6;pointer-events:none}
+.err{color:var(--maroon);font-size:14px;text-align:center;margin-top:12px;display:none}
+
+/* done */
+.done{text-align:center;padding:10px 0 4px}
+.stamp{width:200px;margin:4px auto 10px;animation:stampin .7s cubic-bezier(.2,1.5,.4,1)}
+@keyframes stampin{from{transform:scale(2) rotate(-24deg);opacity:0}to{transform:rotate(-8deg);opacity:1}}
+.done h2{font-size:clamp(26px,4vw,34px);letter-spacing:-.02em;margin:6px 0;color:var(--maroon-deep)}
+.done .sub{color:var(--muted);margin:0 0 22px}
+.review{background:linear-gradient(135deg,var(--maroon),var(--maroon-deep));color:#fff;border-radius:22px;padding:24px;text-align:left;position:relative;overflow:hidden}
+.review::after{content:"";position:absolute;right:-40px;top:-40px;width:150px;height:150px;border-radius:50%;background:rgba(201,160,80,.22)}
+.stars{font-size:26px;letter-spacing:4px;color:var(--gold);margin-bottom:4px}
+.review h3{margin:0 0 4px;font-size:19px;letter-spacing:-.01em}
+.review p{margin:0 0 16px;color:#f0dede;font-size:14.5px}
+.btn.gold{display:inline-block;background:var(--gold);color:var(--maroon-deep);box-shadow:0 8px 20px rgba(0,0,0,.25);position:relative;z-index:1}
+
+/* why strip */
+.why{padding:56px 0 20px}
+.why h3{text-align:center;font-size:clamp(22px,3.4vw,30px);letter-spacing:-.02em;margin:0 0 6px;color:var(--maroon-deep)}
+.why .s{text-align:center;color:var(--muted);margin:0 0 28px}
+.wgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:760px){.wgrid{grid-template-columns:1fr}}
+.wc{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:24px}
+.wc .ic{width:46px;height:46px;border-radius:14px;background:var(--gold-soft);display:grid;place-items:center;margin-bottom:14px}
+.wc .ic svg{width:24px;height:24px;stroke:var(--maroon);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.wc h4{margin:0 0 4px;font-size:16px}.wc p{margin:0;color:var(--muted);font-size:14px}
+
+/* footer */
+footer.site{margin-top:50px;background:var(--maroon-deep);color:#e9d9c3;padding:40px 0 28px}
+.frow{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:flex-start}
+.frow .word{font-weight:700;font-size:20px;color:#fff}.frow .word span{color:var(--gold)}
+.frow p{margin:8px 0 0;font-size:13.5px;max-width:320px;color:#d8c5ab}
+.flinks{display:flex;gap:10px;flex-wrap:wrap}
+.flinks a{text-decoration:none;font-size:13.5px;padding:8px 16px;border:1px solid rgba(255,255,255,.22);border-radius:999px;transition:background .2s,color .2s}
+.flinks a:hover{background:var(--gold);color:var(--maroon-deep);border-color:var(--gold)}
+.fbase{border-top:1px solid rgba(255,255,255,.14);margin-top:26px;padding-top:18px;font-size:12.5px;color:#c9b595;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar">Trusted migration &amp; education consultancy &nbsp;·&nbsp; <b>MARN 0637341</b></div>
+
+<header class="site">
+  <div class="container hrow">
+    <a class="logo" href="https://epaglobal.com/" target="_blank" rel="noopener" aria-label="EPA Global">
+      <!-- To use the real logo: set LOGO_SRC in the config below (file path or data URI) -->
+      <img id="logoImg" alt="EPA Global">
+      <span class="mark" id="logoMark"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A050" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg></span>
+      <span class="word" id="logoWord">EPA <span>Global</span></span>
+    </a>
+    <nav class="links">
+      <a href="#form">Feedback</a>
+      <a href="#why">Why it matters</a>
+      <a class="pill" href="https://epaglobal.com/" target="_blank" rel="noopener">epaglobal.com</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hgrid">
+    <div>
+      <div class="eyebrow"><i></i> Visa journey feedback</div>
+      <h1>Your visa journey, <em>in your words.</em></h1>
+      <p class="lead">Congratulations on your visa! Tell us how EPA Global did. It takes about 2 minutes and helps the next student begin with confidence.</p>
+      <div class="facts">
+        <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>About 2 minutes</span>
+        <span><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Every question optional</span>
+        <span><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>Helps future students</span>
+      </div>
+    </div>
+    <div class="heroart" id="heroArt">
+      <!-- Original illustration: passport, visa page, stamp, paper plane. Replace with a photo via HERO_PHOTO in config. -->
+      <svg viewBox="0 0 460 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Passport, visa stamp and paper plane illustration">
+        <defs>
+          <linearGradient id="gP" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b30000"/><stop offset="1" stop-color="#4a0000"/></linearGradient>
+          <linearGradient id="gG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e3c27c"/><stop offset="1" stop-color="#b78a36"/></linearGradient>
+        </defs>
+        <circle cx="240" cy="190" r="170" fill="#fff" opacity=".08"/>
+        <circle cx="240" cy="190" r="120" fill="#fff" opacity=".07"/>
+        <!-- globe -->
+        <g transform="translate(92 96)" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2">
+          <circle r="54"/><ellipse rx="22" ry="54"/><path d="M-54 0h108M-46 -28h92M-46 28h92"/>
+        </g>
+        <!-- visa page -->
+        <g transform="rotate(7 270 215)">
+          <rect x="190" y="104" width="190" height="236" rx="16" fill="#fff"/>
+          <rect x="190" y="104" width="190" height="42" rx="16" fill="#f3e8d2"/>
+          <rect x="190" y="130" width="190" height="16" fill="#f3e8d2"/>
+          <rect x="208" y="118" width="70" height="8" rx="4" fill="#990000" opacity=".8"/>
+          <g fill="#e6dccb"><rect x="208" y="164" width="150" height="9" rx="4.5"/><rect x="208" y="184" width="118" height="9" rx="4.5"/><rect x="208" y="204" width="136" height="9" rx="4.5"/></g>
+          <g fill="#d9ccb5"><rect x="208" y="300" width="150" height="6" rx="3"/><rect x="208" y="314" width="150" height="6" rx="3"/></g>
+          <!-- stamp -->
+          <g transform="translate(300 262) rotate(-14)">
+            <circle r="46" fill="none" stroke="#990000" stroke-width="4"/>
+            <circle r="38" fill="none" stroke="#990000" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <text y="-6" text-anchor="middle" font-family="Poppins,Arial" font-weight="700" font-size="11" fill="#990000" letter-spacing="1.5">JOURNEY</text>
+            <text y="9" text-anchor="middle" font-family="Poppins,Arial" font-weight="700" font-size="11" fill="#990000" letter-spacing="1.5">BEGINS</text>
+            <path d="M-14 20l8 8 20-18" fill="none" stroke="#990000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+        </g>
+        <!-- passport cover -->
+        <g transform="rotate(-8 150 250)">
+          <rect x="62" y="150" width="170" height="214" rx="16" fill="url(#gP)"/>
+          <rect x="62" y="150" width="14" height="214" rx="7" fill="#000" opacity=".18"/>
+          <g transform="translate(150 222)" fill="none" stroke="url(#gG)" stroke-width="3">
+            <circle r="30"/><ellipse rx="12" ry="30"/><path d="M-30 0h60M-26 -15h52M-26 15h52"/>
+          </g>
+          <text x="150" y="290" text-anchor="middle" font-family="Poppins,Arial" font-weight="700" font-size="15" fill="#e3c27c" letter-spacing="3">PASSPORT</text>
+          <rect x="112" y="304" width="76" height="3" rx="1.5" fill="#e3c27c" opacity=".7"/>
+        </g>
+        <!-- plane + trail -->
+        <path d="M30 330 C 90 250, 190 300, 270 190 S 380 60, 410 52" fill="none" stroke="#C9A050" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"/>
+        <g transform="translate(398 50) rotate(-18)">
+          <path d="M0 0 L46 -14 L22 24 L16 8 Z" fill="#fff"/>
+          <path d="M16 8 L46 -14 L22 24 Z" fill="#e8d6b0"/>
+          <path d="M0 0 L16 8 L12 18 Z" fill="#d6bd86"/>
+        </g>
+        <!-- clouds -->
+        <g fill="#fff" opacity=".22"><ellipse cx="400" cy="320" rx="40" ry="12"/><ellipse cx="372" cy="310" rx="26" ry="12"/><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="86" cy="32" rx="22" ry="10"/></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<main class="container shell" id="form">
+  <div class="panel">
+    <div class="progress"><i id="bar"></i></div>
+    <div class="stepper" id="stepper"></div>
+    <div class="body">
+      <div id="app"></div>
+      <p class="err" id="err">Something went wrong. Please check your internet and try again.</p>
+    </div>
+  </div>
+</main>
+
+<section class="why container" id="why">
+  <h3>Why your feedback matters</h3>
+  <p class="s">Every answer helps us guide the next student better.</p>
+  <div class="wgrid">
+    <div class="wc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10z"/></svg></div><h4>Honest guidance</h4><p>Your words keep our advice real and our promises honest.</p></div>
+    <div class="wc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 12l7 7L21 6"/></svg></div><h4>Better processes</h4><p>We fix delays and improve every step from documents to visa handover.</p></div>
+    <div class="wc"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6M17 5.5a3.5 3.5 0 0 1 0 6.5M18.5 14.5c2 .7 3 2.5 3 5.5"/></svg></div><h4>Inspire students</h4><p>Your story helps the next student take the first step with confidence.</p></div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="container">
+    <div class="frow">
+      <div><div class="word">EPA <span>Global</span></div><p>Migration and education consultancy guiding students to study abroad with clarity and care.</p></div>
+      <div class="flinks">
+        <a href="https://epaglobal.com/" target="_blank" rel="noopener">Website</a>
+        <a href="https://www.instagram.com/epaglobal/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/@epaglobal7184" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://www.linkedin.com/company/epaglobal/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="fbase"><span>© EPA Global &nbsp;|&nbsp; MARN 0637341</span><span>epaglobal.com</span></div>
+  </div>
+</footer>
+
+<script>
+/* =====================================================================
+   CONFIG  (paste your Google Form details here)
+   1. FORM_ACTION: your pre-filled link with  /viewform?...  changed to  /formResponse
+   2. ENTRY: replace each entry.0000000000 with the real entry id
+   3. REVIEW_URL: your EPA Global Google review link
+   4. Optional: LOGO_SRC (real EPA Global logo file / data URI), HERO_PHOTO (a photo to replace the illustration)
+   ===================================================================== */
+const FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSeJNNykGyQPuLA2NILps7cYazqAVpQ3IBd4mSKIy48KZBwZdQ/formResponse';
+const REVIEW_URL  = 'https://share.google/hPvnJOQCytIv3B3hk';
+const AUTO_REDIRECT_SECONDS = 6;  // after submit, auto-open the Google review page. Set 0 to turn off (button only)
+const LOGO_SRC    = '';   // e.g. 'epa-logo.png'
+const HERO_PHOTO  = '';   // e.g. 'hero.jpg' (only use photos you own the rights to)
+
+const ENTRY = {
+  source:'entry.1235124957',
+  why:'entry.2120242209',
+  clear:'entry.91534699',
+  g_docs:'entry.684385960',
+  g_sop:'entry.970945895',
+  g_updates:'entry.910996636',
+  g_team:'entry.1543156995',
+  g_handover:'entry.373847688',
+  delay:'entry.109804894',
+  overall:'entry.688836428',
+  nps:'entry.1812161776',
+  best:'entry.958291747',
+  improve:'entry.832484444',
+  share:'entry.1366327498',
+  help:'entry.1709795060',
+  name:'entry.565457938',
+  whatsapp:'entry.1591750360',
+  counsellor:'entry.1324732680'
+};
+
+/* QUESTIONS (option text must match your Google Form options EXACTLY) */
+const ICONS=[
+ '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>',
+ '<svg viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8 17c6 0 2-10 8-10"/></svg>',
+ '<svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>',
+ '<svg viewBox="0 0 24 24"><path d="M21 3L3 10.5l7 2.5 2.5 7z"/><path d="M10 13l11-10"/></svg>'
+];
+const STEPS = [
+  { label:'Start', title:'Getting started', sub:'Tell us how your journey with EPA Global began.',
+    qs:[
+      {id:'source', type:'single', other:true, q:'How did you first hear about us?',
+        opts:['Instagram','Facebook','YouTube','Google search','Friend or family','Past client','Seminar or event']},
+      {id:'why', type:'multi', other:true, q:'What made you decide to go ahead with us?', hint:'Select all that apply',
+        opts:['Clear explanation of fees','Honest chances, no false promises','Professional office and team','Reviews or success stories','Recommendation from someone I trust','Knowledge of visa rules']},
+      {id:'clear', type:'single', q:'Did your counsellor answer your questions clearly and honestly?', opts:['Fully','Mostly','Partly','No']}
+    ]},
+  { label:'Experience', title:'Your experience', sub:'How did each part of the process feel from your side?',
+    qs:[
+      {id:'grid', type:'grid', q:'Rate each part of our process', hint:'1 = Very dissatisfied, 5 = Very satisfied',
+        rows:[['g_docs','Document checklist and guidance'],['g_sop','SOP, financial documents and forms'],['g_updates','Updates and speed of replies'],['g_team','Behaviour and professionalism of our team'],['g_handover','Visa handover and next-steps explanation']]},
+      {id:'delay', type:'single', q:'Was anything delayed?', opts:['Nothing was delayed','Minor delay','Major delay']}
+    ]},
+  { label:'Rate us', title:'Rate EPA Global', sub:'Your honest feedback helps us improve.',
+    qs:[
+      {id:'overall', type:'scale', min:1, max:5, q:'Overall, how would you rate EPA Global?', lo:'Very dissatisfied', hi:'Very satisfied'},
+      {id:'nps', type:'scale', min:0, max:10, nps:true, q:'How likely are you to recommend us to a friend or family member?', lo:'Not at all likely', hi:'Extremely likely'},
+      {id:'best', type:'text', q:'What is the one thing we do best?'},
+      {id:'improve', type:'text', q:'What is the one thing we must improve?'}
+    ]},
+  { label:'Your story', title:'Your story & next steps', sub:'Your journey can inspire the next student.',
+    qs:[
+      {id:'share', type:'multi', q:'Would you share your success story with other students?', hint:'Select all that apply', opts:['Yes, as a video','Yes, written','Yes, a photo with my visa','Not now']},
+      {id:'help', type:'multi', q:'Would you like our help with any of these next?', hint:'Select all that apply',
+        opts:['Pre-departure briefing','Flights and forex','Accommodation or airport pickup','Bank account','Dependent or partner visa','Post-study work visa, later']},
+      {id:'details', type:'fields', q:'Your details', hint:'Optional',
+        fields:[['name','Name','text','name'],['whatsapp','Mobile / WhatsApp','tel','tel'],['counsellor','Counsellor name','text','off']]}
+    ]}
+];
+
+/* ===================================================================== */
+const OTHER='__other__', S={}; let cur=0;
+const app=document.getElementById('app'), bar=document.getElementById('bar'), stepper=document.getElementById('stepper');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+if(LOGO_SRC){const i=document.getElementById('logoImg');i.src=LOGO_SRC;i.style.display='block';document.getElementById('logoMark').style.display='none';document.getElementById('logoWord').style.display='none';}
+if(HERO_PHOTO){document.getElementById('heroArt').innerHTML='<img src="'+esc(HERO_PHOTO)+'" alt="EPA Global students">';}
+
+function render(){
+  stepper.innerHTML=STEPS.map((st,i)=>`<div class="sdot" data-d="${i}"><b>${ICONS[i]}</b><span>${st.label}</span></div>${i<STEPS.length-1?'<div class="sline"></div>':''}`).join('');
+  app.innerHTML=STEPS.map((st,i)=>`
+    <section class="step${i===cur?' on':''}" data-step="${i}">
+      <div class="stitle"><div class="ic">${ICONS[i]}</div><div><h2>${st.title}</h2><p>${st.sub}</p></div></div>
+      ${st.qs.map(renderQ).join('')}
+      <div class="actions">
+        ${i>0?'<button class="btn ghost" data-act="back">Back</button>':''}
+        <button class="btn primary" data-act="${i===STEPS.length-1?'submit':'next'}">${i===STEPS.length-1?'Submit feedback':'Continue'}</button>
+      </div>
+    </section>`).join('');
+  update(false);
+}
+function renderQ(q){
+  const head=`<p class="q">${q.q}</p><p class="hint"${q.hint?'':' style="margin-bottom:10px"'}>${q.hint||''}</p>`;
+  let body='';
+  if(q.type==='single'||q.type==='multi'){
+    const opts=q.other?[...q.opts,'Other']:q.opts;
+    body=`<div class="chips">${opts.map(o=>`<button type="button" class="chip" data-q="${q.id}" data-t="${q.type}" data-v="${o==='Other'&&q.other?OTHER:esc(o)}">${esc(o)}</button>`).join('')}</div>`+(q.other?`<input class="other-input" data-other="${q.id}" placeholder="Please specify" autocomplete="off">`:'');
+  } else if(q.type==='grid'){
+    body=`<div>${q.rows.map(([id,l])=>`<div class="grow"><div class="glabel">${l}</div><div class="seg">${[1,2,3,4,5].map(n=>`<button type="button" data-q="${id}" data-t="scale" data-v="${n}">${n}</button>`).join('')}</div></div>`).join('')}</div>`;
+  } else if(q.type==='scale'){
+    const ns=[];for(let n=q.min;n<=q.max;n++)ns.push(n);
+    body=`<div class="seg${q.nps?' nps':''}">${ns.map(n=>`<button type="button" data-q="${q.id}" data-t="scale" data-v="${n}">${n}</button>`).join('')}</div><div class="ends"><span>${q.min} · ${q.lo}</span><span>${q.max} · ${q.hi}</span></div>`;
+  } else if(q.type==='text'){
+    body=`<textarea class="txt" data-text="${q.id}" rows="3" placeholder="Type here…"></textarea>`;
+  } else if(q.type==='fields'){
+    body=q.fields.map(([id,l,type,ac])=>`<div class="field"><label>${l}</label><input data-text="${id}" type="${type}" autocomplete="${ac}"></div>`).join('');
+  }
+  return `<div class="card">${head}${body}</div>`;
+}
+function update(scroll=true){
+  document.querySelectorAll('.step').forEach(s=>s.classList.toggle('on',+s.dataset.step===cur));
+  document.querySelectorAll('.sdot').forEach(d=>{const i=+d.dataset.d;d.classList.toggle('on',i===cur);d.classList.toggle('done',i<cur);});
+  bar.style.width=((cur+1)/STEPS.length*100)+'%';
+  if(scroll) document.getElementById('form').scrollIntoView({behavior:'smooth',block:'start'});
+}
+app.addEventListener('click',e=>{
+  const act=e.target.closest('[data-act]');
+  if(act){ if(act.dataset.act==='next'){cur++;update();} else if(act.dataset.act==='back'){cur--;update();} else submit(act); return; }
+  const b=e.target.closest('[data-q]'); if(!b) return;
+  const id=b.dataset.q,t=b.dataset.t,v=b.dataset.v;
+  if(t==='multi'){ const a=S[id]=S[id]||[]; const i=a.indexOf(v); i>-1?a.splice(i,1):a.push(v); b.classList.toggle('sel',i===-1); }
+  else if(t==='single'&&S[id]===v){ delete S[id]; b.classList.remove('sel'); }
+  else { S[id]=v; b.parentElement.querySelectorAll('[data-q]').forEach(x=>x.classList.toggle('sel',x===b)); }
+  const oi=app.querySelector(`[data-other="${id}"]`);
+  if(oi){ const on=t==='multi'?(S[id]||[]).includes(OTHER):S[id]===OTHER; oi.classList.toggle('show',on); if(on)oi.focus(); }
+});
+app.addEventListener('input',e=>{ const t=e.target; if(t.dataset.text)S[t.dataset.text]=t.value.trim(); if(t.dataset.other)S[t.dataset.other+'_other']=t.value.trim(); });
+
+function buildParams(){
+  const p=new URLSearchParams();
+  const add=(id,val)=>{ if(val!==undefined&&val!=='') p.append(ENTRY[id],val); };
+  const other=(id,vals)=>vals.forEach(v=>{
+    if(v===OTHER){ p.append(ENTRY[id],'__other_option__'); p.append(ENTRY[id]+'.other_option_response',S[id+'_other']||''); }
+    else p.append(ENTRY[id],v);
+  });
+  STEPS.forEach(st=>st.qs.forEach(q=>{
+    if(q.type==='single'&&S[q.id]) other(q.id,[S[q.id]]);
+    else if(q.type==='multi'&&(S[q.id]||[]).length) other(q.id,S[q.id]);
+    else if(q.type==='grid') q.rows.forEach(([id])=>add(id,S[id]));
+    else if(q.type==='scale'||q.type==='text') add(q.id,S[q.id]);
+    else if(q.type==='fields') q.fields.forEach(([id])=>add(id,S[id]));
+  }));
+  return p;
+}
+async function submit(btn){
+  const err=document.getElementById('err'); err.style.display='none';
+  const params=buildParams(); btn.disabled=true; btn.textContent='Sending…';
+  try{
+    if(FORM_ACTION.includes('PASTE_FORM_ID')) console.log('DEMO MODE. Payload:\n'+decodeURIComponent(params.toString().replace(/&/g,'\n')));
+    else await fetch(FORM_ACTION,{method:'POST',mode:'no-cors',body:params});
+    done();
+  }catch(ex){ btn.disabled=false; btn.textContent='Submit feedback'; err.style.display='block'; }
+}
+function done(){
+  bar.style.width='100%'; stepper.style.display='none';
+  app.innerHTML=`<div class="done">
+    <svg class="stamp" viewBox="0 0 200 200" aria-hidden="true">
+      <circle cx="100" cy="100" r="92" fill="none" stroke="#990000" stroke-width="6"/>
+      <circle cx="100" cy="100" r="80" fill="none" stroke="#C9A050" stroke-width="2" stroke-dasharray="4 5"/>
+      <path id="arcT" d="M30 100a70 70 0 0 1 140 0" fill="none"/>
+      <text font-family="Poppins,Arial" font-weight="700" font-size="15" fill="#990000" letter-spacing="3.5"><textPath href="#arcT" startOffset="50%" text-anchor="middle">EPA GLOBAL</textPath></text>
+      <path d="M62 108l26 26 52-58" fill="none" stroke="#990000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="100" y="170" text-anchor="middle" font-family="Poppins,Arial" font-weight="600" font-size="12" fill="#990000" letter-spacing="3">THANK YOU</text>
+    </svg>
+    <h2>Thank you, we're so proud of you!</h2>
+    <p class="sub">We wish you every success on your journey.</p>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <h3>One last thing, just 30 seconds</h3>
+      <p>A Google review helps the next student find a genuine agency.</p>
+      <a class="btn gold" href="${REVIEW_URL}" id="reviewBtn">Leave a Google review</a>
+      <p id="redir" style="margin:14px 0 0;font-size:13px;color:#e9d9c3;position:relative;z-index:1;display:none"></p>
+    </div></div>`;
+  document.getElementById('form').scrollIntoView({behavior:'smooth',block:'start'});
+  if(AUTO_REDIRECT_SECONDS>0 && !REVIEW_URL.includes('PASTE_')){
+    let n=AUTO_REDIRECT_SECONDS; const r=document.getElementById('redir'); r.style.display='block';
+    const tick=()=>{ r.innerHTML='Opening Google reviews in '+n+'s &nbsp;·&nbsp; <a href="#" id="stopRedir" style="color:#C9A050">Stay here</a>'; };
+    tick();
+    const timer=setInterval(()=>{ n--; if(n<=0){clearInterval(timer);location.href=REVIEW_URL;} else tick(); },1000);
+    r.addEventListener('click',e=>{ if(e.target.id==='stopRedir'){e.preventDefault();clearInterval(timer);r.style.display='none';} });
+  }
+}
+render();
+</script>
+</body>
+</html>

@@ -286,6 +286,9 @@ footer.site{margin-top:50px;background:var(--maroon-deep);color:#e9d9c3;padding:
    ===================================================================== */
 const FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSeJNNykGyQPuLA2NILps7cYazqAVpQ3IBd4mSKIy48KZBwZdQ/formResponse';
 const REVIEW_URL  = 'https://share.google/hPvnJOQCytIv3B3hk';
+// Only if your Google Form has several pages/sections: set this to the page numbers, e.g. '0,1,2,3,4' (see notes).
+// Leave '' if the Google Form is a single page (recommended).
+const PAGE_HISTORY = '';
 const AUTO_REDIRECT_SECONDS = 6;  // after submit, auto-open the Google review page. Set 0 to turn off (button only)
 const LOGO_SRC    = '';   // e.g. 'epa-logo.png'
 const HERO_PHOTO  = '';   // e.g. 'hero.jpg' (only use photos you own the rights to)
@@ -322,7 +325,7 @@ const STEPS = [
   { label:'Start', title:'Getting started', sub:'Tell us how your journey with EPA Global began.',
     qs:[
       {id:'source', type:'single', other:true, q:'How did you first hear about us?',
-        opts:['Instagram','Facebook','YouTube','Google search','Friend or family','Past client','Seminar or event']},
+        opts:['Instagram','Facebook','Youtube','Google Search','Friend or Family','Past Client','Seminar or Event']},
       {id:'why', type:'multi', other:true, q:'What made you decide to go ahead with us?', hint:'Select all that apply',
         opts:['Clear explanation of fees','Honest chances, no false promises','Professional office and team','Reviews or success stories','Recommendation from someone I trust','Knowledge of visa rules']},
       {id:'clear', type:'single', q:'Did your counsellor answer your questions clearly and honestly?', opts:['Fully','Mostly','Partly','No']}
@@ -331,12 +334,12 @@ const STEPS = [
     qs:[
       {id:'grid', type:'grid', q:'Rate each part of our process', hint:'1 = Very dissatisfied, 5 = Very satisfied',
         rows:[['g_docs','Document checklist and guidance'],['g_sop','SOP, financial documents and forms'],['g_updates','Updates and speed of replies'],['g_team','Behaviour and professionalism of our team'],['g_handover','Visa handover and next-steps explanation']]},
-      {id:'delay', type:'single', q:'Was anything delayed?', opts:['Nothing was delayed','Minor delay','Major delay']}
+      {id:'delay', type:'single', q:'Was anything delayed?', opts:['Nothing was delayed','Minor Delay','Major Delay']}
     ]},
   { label:'Rate us', title:'Rate EPA Global', sub:'Your honest feedback helps us improve.',
     qs:[
       {id:'overall', type:'scale', min:1, max:5, q:'Overall, how would you rate EPA Global?', lo:'Very dissatisfied', hi:'Very satisfied'},
-      {id:'nps', type:'scale', min:0, max:10, nps:true, q:'How likely are you to recommend us to a friend or family member?', lo:'Not at all likely', hi:'Extremely likely'},
+      {id:'nps', type:'scale', min:1, max:10, nps:true, q:'How likely are you to recommend us to a friend or family member?', lo:'Not at all likely', hi:'Extremely likely'},
       {id:'best', type:'text', q:'What is the one thing we do best?'},
       {id:'improve', type:'text', q:'What is the one thing we must improve?'}
     ]},
@@ -422,6 +425,7 @@ function buildParams(){
     else if(q.type==='scale'||q.type==='text') add(q.id,S[q.id]);
     else if(q.type==='fields') q.fields.forEach(([id])=>add(id,S[id]));
   }));
+  if(PAGE_HISTORY) p.append('pageHistory',PAGE_HISTORY);
   return p;
 }
 async function submit(btn){

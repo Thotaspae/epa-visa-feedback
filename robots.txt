@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thotaspae.github.io/epa-visa-feedback/sitemap.xml

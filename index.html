@@ -309,6 +309,7 @@ const ENTRY = {
   improve:'entry.832484444',
   share:'entry.1366327498',
   help:'entry.1709795060',
+  g_interview:'entry.294716904', value:'entry.505563071', future:'entry.944301067',
   name:'entry.565457938',
   whatsapp:'entry.1591750360',
   counsellor:'entry.1324732680'
@@ -333,13 +334,15 @@ const STEPS = [
   { label:'Experience', title:'Your experience', sub:'How did each part of the process feel from your side?',
     qs:[
       {id:'grid', type:'grid', q:'Rate each part of our process', hint:'1 = Very dissatisfied, 5 = Very satisfied',
-        rows:[['g_docs','Document checklist and guidance'],['g_sop','SOP, financial documents and forms'],['g_updates','Updates and speed of replies'],['g_team','Behaviour and professionalism of our team'],['g_handover','Visa handover and next-steps explanation']]},
+        rows:[['g_docs','Document checklist and guidance'],['g_sop','SOP, financial documents and forms'],['g_interview','Interview preparation'],['g_updates','Updates and speed of replies'],['g_team','Behaviour and professionalism of our team'],['g_handover','Visa handover and next-steps explanation']]},
       {id:'delay', type:'single', q:'Was anything delayed?', opts:['Nothing was delayed','Minor Delay','Major Delay']}
     ]},
   { label:'Rate us', title:'Rate EPA Global', sub:'Your honest feedback helps us improve.',
     qs:[
       {id:'overall', type:'scale', min:1, max:5, q:'Overall, how would you rate EPA Global?', lo:'Very dissatisfied', hi:'Very satisfied'},
+      {id:'value', type:'scale', min:1, max:5, q:'Was our service good value for the fee you paid?', lo:'Poor value', hi:'Excellent value'},
       {id:'nps', type:'scale', min:1, max:10, nps:true, q:'How likely are you to recommend us to a friend or family member?', lo:'Not at all likely', hi:'Extremely likely'},
+      {id:'future', type:'single', q:'Would you recommend EPA Global to someone in future?', opts:['Yes, definitely','Maybe','No']},
       {id:'best', type:'text', q:'What is the one thing we do best?'},
       {id:'improve', type:'text', q:'What is the one thing we must improve?'}
     ]},
@@ -413,8 +416,9 @@ app.addEventListener('input',e=>{ const t=e.target; if(t.dataset.text)S[t.datase
 
 function buildParams(){
   const p=new URLSearchParams();
-  const add=(id,val)=>{ if(val!==undefined&&val!=='') p.append(ENTRY[id],val); };
-  const other=(id,vals)=>vals.forEach(v=>{
+  const live=id=>ENTRY[id]&&!ENTRY[id].includes('TODO');
+  const add=(id,val)=>{ if(live(id)&&val!==undefined&&val!=='') p.append(ENTRY[id],val); };
+  const other=(id,vals)=>live(id)&&vals.forEach(v=>{
     if(v===OTHER){ p.append(ENTRY[id],'__other_option__'); p.append(ENTRY[id]+'.other_option_response',S[id+'_other']||''); }
     else p.append(ENTRY[id],v);
   });

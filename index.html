@@ -360,7 +360,7 @@ const ENTRY = {
   improve:'entry.832484444',
   share:'entry.1366327498',
   help:'entry.1709795060',
-  g_interview:'entry.294716904', value:'entry.505563071', future:'entry.944301067',
+  hesitation:'entry.988497396', g_interview:'entry.294716904', value:'entry.505563071', future:'entry.944301067',
   name:'entry.565457938',
   whatsapp:'entry.1591750360',
   counsellor:'entry.1324732680'
@@ -378,6 +378,8 @@ const STEPS = [
     qs:[
       {id:'source', type:'single', other:true, q:'How did you first hear about us?',
         opts:['Instagram','Facebook','Youtube','Google Search','Friend or Family','Past Client','Seminar or Event']},
+      {id:'hesitation', type:'multi', q:'Before deciding, what hesitations did you have about us?', hint:'Select all that apply',
+        opts:['Company','Counselling','Visa','Process','Others']},
       {id:'why', type:'multi', other:true, q:'What made you decide to go ahead with us?', hint:'Select all that apply',
         opts:['Clear explanation of fees','Honest chances, no false promises','Professional office and team','Reviews or success stories','Recommendation from someone I trust','Knowledge of visa rules']},
       {id:'clear', type:'single', q:'Did your counsellor answer your questions clearly and honestly?', opts:['Fully','Mostly','Partly','No']}
